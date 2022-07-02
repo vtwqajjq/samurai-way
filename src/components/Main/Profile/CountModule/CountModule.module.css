@@ -1,0 +1,6 @@
+.countModule {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #dce1e6;
+    height: 70px;
+}

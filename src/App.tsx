@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./components/Header/Header";
+import {Main} from "./components/Main/Main";
 
 function App() {
     return (
@@ -10,7 +11,11 @@ function App() {
                     <Header/>
                 </div>
             </div>
-
+            <div className="main">
+                <div className="container">
+                    <Main />
+                </div>
+            </div>
         </div>
     );
 }

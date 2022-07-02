@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 
-.App {
-
+a {
+  text-decoration: none;
 }
 
 .container {
@@ -15,4 +15,10 @@
 
 .header {
   background-color: #416A9A;
+}
+
+.main {
+  height: 100vh;
+  background-color: #EDEEF0;
+  padding-top: 15px;
 }

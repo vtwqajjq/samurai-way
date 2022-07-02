@@ -1,0 +1,18 @@
+.navItem {
+    display: flex;
+    align-items: center;
+    width: 153px;
+    height: 28px;
+}
+
+.navItem a {
+    padding-left: 7px;
+    font-family: Roboto;
+    color: #2A5885;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.navItem img {
+    opacity: 40%;
+}

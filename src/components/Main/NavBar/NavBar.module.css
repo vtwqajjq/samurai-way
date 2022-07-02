@@ -1,0 +1,5 @@
+.navigationItem {
+    display: flex;
+    width: 153px;
+    flex-direction: column;
+}
