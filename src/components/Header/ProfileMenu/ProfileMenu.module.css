@@ -1,0 +1,12 @@
+.profileMenu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.profileMenu img {
+    height: 24px;
+    border-radius: 50%;
+}
