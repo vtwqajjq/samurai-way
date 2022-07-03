@@ -16,3 +16,11 @@
 .navItem img {
     opacity: 40%;
 }
+
+.navItem a.active{
+    display: block;
+    width: 100%;
+    height: 15px;
+    background-color: snow;
+    border-radius: 5px;
+}

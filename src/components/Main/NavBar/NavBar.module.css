@@ -1,5 +1,6 @@
 .navigationItem {
     display: flex;
     width: 153px;
+    margin-right: 15px;
     flex-direction: column;
 }

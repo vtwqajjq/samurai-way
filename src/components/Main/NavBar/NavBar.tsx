@@ -14,13 +14,13 @@ import home from "../../../assets/img/svg/Home.svg"
 export const NavBar = () => {
     return (
         <div className={style.navigationItem}>
-            <NavigationItem logo={home} name={'Моя страница'}/>
-            <NavigationItem logo={news} name={'Новости'}/>
-            <NavigationItem logo={messages} name={'Сообщения'}/>
-            <NavigationItem logo={friends} name={'Друзья'}/>
-            <NavigationItem logo={groups} name={'Сообщества'}/>
-            <NavigationItem logo={music} name={'Музыка'}/>
-            <NavigationItem logo={photos} name={'Фотографии'}/>
+            <NavigationItem link='/profile' logo={home} name={'Моя страница'}/>
+            <NavigationItem link='/news' logo={news} name={'Новости'}/>
+            <NavigationItem link='/dialogs' logo={messages} name={'Сообщения'}/>
+            <NavigationItem link='/friends' logo={friends} name={'Друзья'}/>
+            <NavigationItem link='/groups' logo={groups} name={'Сообщества'}/>
+            <NavigationItem link='/music' logo={music} name={'Музыка'}/>
+            <NavigationItem link='/photos' logo={photos} name={'Фотографии'}/>
         </div>
     );
 };
