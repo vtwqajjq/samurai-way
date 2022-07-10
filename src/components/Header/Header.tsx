@@ -11,7 +11,7 @@ export const Header = () => {
             <Logo/>
             <Search/>
             <Notification/>
-            <ProfileMenu name={'Elvis Trasey'} img={'https://sun9-77.userapi.com/impf/F_-FjkchTTY4KDex-yPsOu2fo7HTdVO0336DIg/3rMVRwYiqwA.jpg?size=600x600&quality=95&sign=8578a4accfc7bc579dab7cf242264895&type=album'}/>
+            <ProfileMenu name={'Elvis Presley'} img={'https://sun9-77.userapi.com/impf/F_-FjkchTTY4KDex-yPsOu2fo7HTdVO0336DIg/3rMVRwYiqwA.jpg?size=600x600&quality=95&sign=8578a4accfc7bc579dab7cf242264895&type=album'}/>
         </div>
     );
 };

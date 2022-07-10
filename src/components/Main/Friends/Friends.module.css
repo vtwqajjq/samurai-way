@@ -1,0 +1,28 @@
+.wrapper {
+    width: 600px;
+}
+
+.header {
+    background-color: azure;
+    height: 60px;
+    border: 0;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.header a {
+    color: #000000;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.header span {
+    font-size: 12px;
+    opacity: 60%;
+    margin-right: 20px;
+}
+
+.friends {
+    margin-top: 10px;
+}

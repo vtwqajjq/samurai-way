@@ -1,0 +1,16 @@
+.owner {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 15px;
+}
+
+.owner:hover {
+    background-color: #dce1e6;
+    cursor: pointer;
+}
+
+.owner a {
+    color: #5181b8;
+    font-size: 16px;
+}

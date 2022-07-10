@@ -1,0 +1,30 @@
+.friend {
+    display: flex;
+    align-items: center;
+    height: 130px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #dce1e6;
+    border-radius: 5px;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.friendDescription {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 30px;
+    color: #224B7A;
+    font-size: 20px;
+}
+
+.friendDescription a {
+    margin-top: 15px;
+    color: #5181b8;
+}
+
