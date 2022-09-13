@@ -9,24 +9,27 @@ import {Photos} from "./Photos/Photos";
 import {Friends} from "./Friends/Friends";
 import {Groups} from "./Groups/Groups";
 import {Music} from "./Music/Music";
+import {addPost, DialogsPageType, FriendsPageType, ProfilePageType, RootStateType, state} from "../../redux/state";
 
+type MainPropsType = {
+    profilePage: ProfilePageType
+    friendsPage: FriendsPageType
+    dialogsPage: DialogsPageType
+    addPostCallback: (postMessage: string) => void
+}
 
-export const Main = () => {
+export const Main = (props: MainPropsType) => {
     return (
         <BrowserRouter>
             <div className={style.main}>
                 <NavBar/>
                 <Route path='/profile' render={() => <Profile
-                    img={'https://sun2.beltelecom-by-minsk.userapi.com/s/v1/ig2/joeEGBFPzIP62tYdAcxwPC2JNUwZfFTBoeEjZC8fXAdN6zAX95rLHuEoe5WYYuicoCVV8s9uA3SeJ4PCbZFsQOQ8.jpg?size=200x200&quality=96&crop=124,378,558,558&ava=1'}
-                    name={'Владислав Кожановский'}
-                    birthday={'9 февраля'}
-                    city={'Речица'}
-                    followers={143}
-                    photos={22}
+                    profileData={props.profilePage} addPostCallback={props.addPostCallback}
                 />}/>
                 <Route path='/news' render={() => <News/>}/>
-                <Route path='/dialogs' render={() => <Dialogs/>}/>
-                <Route path='/friends' render={() => <Friends/>}/>
+                <Route path='/dialogs'
+                       render={() => <Dialogs dialogsData={props.dialogsPage}/>}/>
+                <Route path='/friends/' render={() => <Friends friendsData={props.friendsPage}/>}/>
                 <Route path='/groups' render={() => <Groups/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/photos' render={() => <Photos/>}/>

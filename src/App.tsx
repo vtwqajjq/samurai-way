@@ -3,6 +3,7 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
+import {addPost, state} from './redux/state'
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                 </div>
                 <div className="main">
                     <div className="container">
-                        <Main/>
+                        <Main profilePage={state.profilePage} friendsPage={state.friendsPage} dialogsPage={state.dialogsPage} addPostCallback={addPost}/>
                     </div>
                 </div>
             </div>

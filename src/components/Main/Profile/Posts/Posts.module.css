@@ -1,0 +1,9 @@
+.posts {
+    border-top: 1px solid #dce1e6;
+    padding: 20px;
+}
+
+.postsAdder {
+    display: flex;
+    justify-content: space-between;
+}

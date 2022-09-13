@@ -1,0 +1,130 @@
+{
+  "main": {
+    "id": "5100bfe7ca486812",
+    "type": "split",
+    "children": [
+      {
+        "id": "8bd78a8b08dbe2df",
+        "type": "leaf",
+        "state": {
+          "type": "graph",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "51edd2d0a34f2a6c",
+    "type": "split",
+    "children": [
+      {
+        "id": "e1b4d4626874dea7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bb968ef6ff0689e5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cdf91f5b8fac59c1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "153fc569c163a489",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "eab6ce81df87588b",
+    "type": "split",
+    "children": [
+      {
+        "id": "6a8042f75caf7496",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d5504f48abd86594",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e2b4894391b9e3c2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "eab5258578078ca6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e46e17ca018136a3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "8bd78a8b08dbe2df",
+  "lastOpenFiles": [
+    "Header/Header.md",
+    "structure of project/App.tsx.md",
+    "App.tsx.md",
+    "Structure of project.md"
+  ]
+}
