@@ -9,13 +9,22 @@ import {Photos} from "./Photos/Photos";
 import {Friends} from "./Friends/Friends";
 import {Groups} from "./Groups/Groups";
 import {Music} from "./Music/Music";
-import {addPost, DialogsPageType, FriendsPageType, ProfilePageType, RootStateType, state} from "../../redux/state";
+import {
+    addPost,
+    changeNewText,
+    DialogsPageType,
+    FriendsPageType,
+    ProfilePageType,
+    RootStateType,
+    state
+} from "../../redux/state";
 
 type MainPropsType = {
     profilePage: ProfilePageType
     friendsPage: FriendsPageType
     dialogsPage: DialogsPageType
     addPostCallback: (postMessage: string) => void
+    changeNewTextCallback: (newText: string) => void
 }
 
 export const Main = (props: MainPropsType) => {
@@ -25,6 +34,7 @@ export const Main = (props: MainPropsType) => {
                 <NavBar/>
                 <Route path='/profile' render={() => <Profile
                     profileData={props.profilePage} addPostCallback={props.addPostCallback}
+                    changeNewTextCallback={props.changeNewTextCallback}
                 />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/dialogs'

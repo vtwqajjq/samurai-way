@@ -7,6 +7,7 @@ import Posts from "./Posts/Posts";
 type ProfilePropsType = {
     profileData: ProfilePageType
     addPostCallback: (postMessage: string) => void
+    changeNewTextCallback: (newText: string) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
@@ -23,7 +24,9 @@ export const Profile = (props: ProfilePropsType) => {
                     <p>Город:<span>{props.profileData.profile.city}</span></p>
                 </div>
                 <CountModule followers={props.profileData.profile.followers} name={'подписчик(-а)'}/>
-                <Posts postsData = {props.profileData.posts} addPostCallback={props.addPostCallback}/>
+                <Posts postsData={props.profileData.posts} addPostCallback={props.addPostCallback}
+                       changeNewTextCallback={props.changeNewTextCallback}
+                />
                 {/*<CountModule photos={props.photos} name={'фотографии'}/>*/}
             </div>
         </div>
