@@ -7,7 +7,6 @@ type OnlineFriendsPropsType = {
 }
 
 export const OnlineFriends = (props: OnlineFriendsPropsType) => {
-    debugger
     return (
         <>
             {props.friendsOnline.map((f: FriendType) => {

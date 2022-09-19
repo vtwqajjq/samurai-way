@@ -1,7 +1,6 @@
 import {v1} from "uuid";
 import ava from "../assets/img/jpg/Morty.jpg";
 import vika from '../assets/img/jpg/Vika.jpg'
-import {rerenderEntireTree} from "../render";
 
 export type DialogType = {
     id: string
@@ -57,6 +56,10 @@ export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     friendsPage: FriendsPageType
+}
+
+let rerenderEntireTree = () => {
+
 }
 
 export const state: RootStateType = {
@@ -181,5 +184,9 @@ export const addPost = (postMessage: string) => {
 export const changeNewText = (newText: string) => {
     state.profilePage.newPostText = newText
     rerenderEntireTree()
+}
+
+export const subscribe = (observer: ()=>void ) => {
+    rerenderEntireTree = observer
 }
 

@@ -17,7 +17,7 @@ export const NavBar = () => {
             <NavigationItem link='/profile' logo={home} name={'Моя страница'}/>
             <NavigationItem link='/news' logo={news} name={'Новости'}/>
             <NavigationItem link='/dialogs' logo={messages} name={'Сообщения'}/>
-            <NavigationItem link='/friends' logo={friends} name={'Друзья'}/>
+            <NavigationItem link='/friends/all' logo={friends} name={'Друзья'}/>
             <NavigationItem link='/groups' logo={groups} name={'Сообщества'}/>
             <NavigationItem link='/music' logo={music} name={'Музыка'}/>
             <NavigationItem link='/photos' logo={photos} name={'Фотографии'}/>
