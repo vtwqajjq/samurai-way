@@ -3,9 +3,13 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
-import {addPost, changeNewText, state} from './redux/state'
+import {storeType} from "./redux/state";
 
-function App() {
+type AppPropsType = {
+    store: storeType
+}
+
+function App(props: AppPropsType) {
     return (
         <Router>
             <div className="App">
@@ -16,9 +20,9 @@ function App() {
                 </div>
                 <div className="main">
                     <div className="container">
-                        <Main profilePage={state.profilePage} friendsPage={state.friendsPage}
-                              dialogsPage={state.dialogsPage} addPostCallback={addPost}
-                              changeNewTextCallback={changeNewText}
+                        <Main profilePage={props.store._state.profilePage} friendsPage={props.store._state.friendsPage}
+                              dialogsPage={props.store._state.dialogsPage} addPostCallback={props.store.addPost}
+                              changeNewTextCallback={props.store.changeNewText}
                         />
                     </div>
                 </div>

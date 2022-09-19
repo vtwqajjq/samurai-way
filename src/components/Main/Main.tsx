@@ -10,13 +10,9 @@ import {Friends} from "./Friends/Friends";
 import {Groups} from "./Groups/Groups";
 import {Music} from "./Music/Music";
 import {
-    addPost,
-    changeNewText,
     DialogsPageType,
     FriendsPageType,
     ProfilePageType,
-    RootStateType,
-    state
 } from "../../redux/state";
 
 type MainPropsType = {
