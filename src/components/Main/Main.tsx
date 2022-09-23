@@ -10,6 +10,7 @@ import {Friends} from "./Friends/Friends";
 import {Groups} from "./Groups/Groups";
 import {Music} from "./Music/Music";
 import {
+    AddPostActionType, ChangeNewTextPostActionType,
     DialogsPageType,
     FriendsPageType,
     ProfilePageType,
@@ -19,8 +20,7 @@ type MainPropsType = {
     profilePage: ProfilePageType
     friendsPage: FriendsPageType
     dialogsPage: DialogsPageType
-    addPostCallback: (postMessage: string) => void
-    changeNewTextCallback: (newText: string) => void
+    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
 }
 
 export const Main = (props: MainPropsType) => {
@@ -29,8 +29,7 @@ export const Main = (props: MainPropsType) => {
             <div className={style.main}>
                 <NavBar/>
                 <Route path='/profile' render={() => <Profile
-                    profileData={props.profilePage} addPostCallback={props.addPostCallback}
-                    changeNewTextCallback={props.changeNewTextCallback}
+                    profileData={props.profilePage} dispatch={props.dispatch}
                 />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/dialogs'

@@ -1,13 +1,12 @@
 import React from 'react';
 import style from "./Profile.module.css"
 import {CountModule} from "./CountModule/CountModule";
-import {ProfilePageType} from "../../../redux/state";
+import {AddPostActionType, ChangeNewTextPostActionType, ProfilePageType} from "../../../redux/state";
 import Posts from "./Posts/Posts";
 
 type ProfilePropsType = {
     profileData: ProfilePageType
-    addPostCallback: (postMessage: string) => void
-    changeNewTextCallback: (newText: string) => void
+    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {
@@ -24,8 +23,7 @@ export const Profile = (props: ProfilePropsType) => {
                     <p>Город:<span>{props.profileData.profile.city}</span></p>
                 </div>
                 <CountModule followers={props.profileData.profile.followers} name={'подписчик(-а)'}/>
-                <Posts postsData={props.profileData.posts} addPostCallback={props.addPostCallback}
-                       changeNewTextCallback={props.changeNewTextCallback}
+                <Posts postsData={props.profileData.posts} dispatch = {props.dispatch}
                 />
                 {/*<CountModule photos={props.photos} name={'фотографии'}/>*/}
             </div>

@@ -3,10 +3,11 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
-import {storeType} from "./redux/state";
+import {AddPostActionType, ChangeNewTextPostActionType, RootStateType} from "./redux/state";
 
 type AppPropsType = {
-    store: storeType
+    state: RootStateType
+    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
 }
 
 function App(props: AppPropsType) {
@@ -20,9 +21,8 @@ function App(props: AppPropsType) {
                 </div>
                 <div className="main">
                     <div className="container">
-                        <Main profilePage={props.store._state.profilePage} friendsPage={props.store._state.friendsPage}
-                              dialogsPage={props.store._state.dialogsPage} addPostCallback={props.store.addPost}
-                              changeNewTextCallback={props.store.changeNewText}
+                        <Main profilePage={props.state.profilePage} friendsPage={props.state.friendsPage}
+                              dialogsPage={props.state.dialogsPage} dispatch = {props.dispatch}
                         />
                     </div>
                 </div>

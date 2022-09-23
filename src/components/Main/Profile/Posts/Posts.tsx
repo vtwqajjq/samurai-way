@@ -1,24 +1,23 @@
 import React, {ChangeEvent} from 'react';
 import style from './Posts.module.css'
 import Post from "./Post/Post";
-import {PostType} from "../../../../redux/state";
+import {AddPostActionType, ChangeNewTextPostActionType, PostType} from "../../../../redux/state";
 
 type PostsPropsType = {
     postsData: PostType[]
-    addPostCallback: (postMessage: string) => void
-    changeNewTextCallback: (newText: string) => void
+    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
 }
 
 const Posts = (props: PostsPropsType) => {
     let onClickButtonHandler = () => {
         if (newPostElement.current) {
-            props.addPostCallback(newPostElement.current?.value.trim())
+            props.dispatch({type:"ADD-POST", postMessage: newPostElement.current?.value.trim()})
             newPostElement.current.value = ''
         }
     }
     let newPostElement = React.createRef<HTMLTextAreaElement>()
     const onChangeAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.changeNewTextCallback(e.currentTarget.value)
+        props.dispatch({type: "CHANGE-NEW-TEXT", newText: e.currentTarget.value})
     }
 
     return (
