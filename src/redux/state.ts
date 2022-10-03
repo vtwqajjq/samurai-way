@@ -39,7 +39,8 @@ export type ProfileType = {
 
 export type DialogsPageType = {
     dialogs: DialogType[]
-    messages: MessageType[]
+    messages: MessageType[],
+    newMessageText: string
 }
 
 export type FriendsPageType = {
@@ -58,22 +59,22 @@ export type RootStateType = {
     friendsPage: FriendsPageType
 }
 
-export type AddPostActionType = {
-    type: 'ADD-POST'
-    postMessage: string
-}
+export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 
-export type ChangeNewTextPostActionType = {
-    type: 'CHANGE-NEW-TEXT',
-    newText: string
-}
+export type ChangeNewTextPostActionType = ReturnType<typeof changeNewTextActionCreator>
+
+export type UpdateNewMessageAT = ReturnType<typeof updateNewMessageTextAC>
+
+export type AddNewTextMessageAT = ReturnType<typeof addNewTextMessageAC>
+
+export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
 
 export type storeType = {
     _state: RootStateType
     getState: () => RootStateType
     _rerenderEntireTree: (_state: RootStateType) => void
     subscribe: (observer: () => void) => void
-    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 export const store: storeType = {
@@ -123,11 +124,12 @@ export const store: storeType = {
                 {id: v1(), name: 'Артем Богданов'},
             ],
             messages: [
-                {id: v1(), name: 'Сергей Чирик', message: 'hi'},
+                {id: v1(), name: 'Я', message: 'hi'},
                 {id: v1(), name: 'Артем Богданов', message: 'how are u?'},
-                {id: v1(), name: 'Сергей Чирик', message: 'not bad,and u?'},
+                {id: v1(), name: 'Я', message: 'not bad,and u?'},
                 {id: v1(), name: 'Артем Богданов', message: 'tnx, im fine'},
-            ]
+            ],
+            newMessageText: ''
         },
         friendsPage: {
             friends: [
@@ -208,6 +210,27 @@ export const store: storeType = {
             case 'CHANGE-NEW-TEXT' :
                 this._state.profilePage.newPostText = action.newText
                 this._rerenderEntireTree(this._state)
+                break;
+            case 'UPDATE-NEW-MESSAGE-TEXT' :
+                this._state.dialogsPage.newMessageText = action.text
+                this._rerenderEntireTree(this._state)
+                break;
+            case "ADD-NEW-MESSAGE-TEXT":
+                let newMessage: MessageType = {
+                    id: v1(),
+                    name: "Я",
+                    message: action.newMessage,
+                }
+                this._state.dialogsPage.messages.push(newMessage)
+                this._rerenderEntireTree(this._state)
+                break
         }
     }
 }
+
+
+export const addPostActionCreator = (text: string) => ({type: "ADD-POST", postMessage: text} as const)
+export const changeNewTextActionCreator = (text: string) => ({type: "CHANGE-NEW-TEXT", newText: text} as const)
+export const updateNewMessageTextAC = (text: string) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', text: text} as const)
+export const addNewTextMessageAC = (text: string) => ({type: 'ADD-NEW-MESSAGE-TEXT', newMessage: text} as const)
+

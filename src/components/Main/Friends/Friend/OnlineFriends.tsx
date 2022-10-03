@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from "./Friend.module.css";
-import {FriendsPageType, FriendType} from "../../../../redux/state";
+import {FriendType} from "../../../../redux/state";
+import {v1} from "uuid";
 
 type OnlineFriendsPropsType = {
     friendsOnline: FriendType[]
@@ -11,7 +12,7 @@ export const OnlineFriends = (props: OnlineFriendsPropsType) => {
         <>
             {props.friendsOnline.map((f: FriendType) => {
                     return (
-                        <div className={style.friend}>
+                        <div key={v1()} className={style.friend}>
                             <div className={style.avatar}>
                                 <img src={f.avatar} alt="avatar"/>
                             </div>

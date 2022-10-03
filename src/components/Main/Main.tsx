@@ -9,18 +9,13 @@ import {Photos} from "./Photos/Photos";
 import {Friends} from "./Friends/Friends";
 import {Groups} from "./Groups/Groups";
 import {Music} from "./Music/Music";
-import {
-    AddPostActionType, ChangeNewTextPostActionType,
-    DialogsPageType,
-    FriendsPageType,
-    ProfilePageType,
-} from "../../redux/state";
+import {ActionTypes, DialogsPageType, FriendsPageType, ProfilePageType,} from "../../redux/state";
 
 type MainPropsType = {
     profilePage: ProfilePageType
     friendsPage: FriendsPageType
     dialogsPage: DialogsPageType
-    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 export const Main = (props: MainPropsType) => {
@@ -33,7 +28,7 @@ export const Main = (props: MainPropsType) => {
                 />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/dialogs'
-                       render={() => <Dialogs dialogsData={props.dialogsPage}/>}/>
+                       render={() => <Dialogs dialogsData={props.dialogsPage} dispatch={props.dispatch}/>}/>
                 <Route path='/friends/' render={() => <Friends friendsData={props.friendsPage}/>}/>
                 <Route path='/groups' render={() => <Groups/>}/>
                 <Route path='/music' render={() => <Music/>}/>

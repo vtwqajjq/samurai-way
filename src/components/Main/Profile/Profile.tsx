@@ -1,12 +1,12 @@
 import React from 'react';
 import style from "./Profile.module.css"
 import {CountModule} from "./CountModule/CountModule";
-import {AddPostActionType, ChangeNewTextPostActionType, ProfilePageType} from "../../../redux/state";
+import {ActionTypes, ProfilePageType} from "../../../redux/state";
 import Posts from "./Posts/Posts";
 
 type ProfilePropsType = {
     profileData: ProfilePageType
-    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {

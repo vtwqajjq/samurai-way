@@ -3,11 +3,11 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
-import {AddPostActionType, ChangeNewTextPostActionType, RootStateType} from "./redux/state";
+import {ActionTypes, RootStateType} from "./redux/state";
 
 type AppPropsType = {
     state: RootStateType
-    dispatch: (action: AddPostActionType| ChangeNewTextPostActionType) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 function App(props: AppPropsType) {
