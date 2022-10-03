@@ -1,32 +1,31 @@
 import {v1} from "uuid";
 import ava from "../assets/img/jpg/Morty.jpg";
 import vika from '../assets/img/jpg/Vika.jpg'
+import {AddPostActionType, ChangeNewTextPostActionType, profileReducer} from "./profile-reducer";
+import {AddNewTextMessageAT, dialogsReducer, UpdateNewMessageAT} from "./dialogs-reducer";
+import {friendsReducer} from "./friends-reducer";
 
 export type DialogType = {
     id: string
     name: string
 }
-
 export type PostType = {
     id: string
     text: string
     date: string
     time: string
 }
-
 export type MessageType = {
     id: string
     name: string
     message: string
 }
-
 export type FriendType = {
     id: string
     name: string
     avatar: string
     isOnline: boolean
 }
-
 export type ProfileType = {
     img: string
     name: string
@@ -42,30 +41,19 @@ export type DialogsPageType = {
     messages: MessageType[],
     newMessageText: string
 }
-
 export type FriendsPageType = {
     friends: FriendType[]
 }
-
 export type ProfilePageType = {
     profile: ProfileType
     posts: PostType[]
     newPostText: string
 }
-
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
     friendsPage: FriendsPageType
 }
-
-export type AddPostActionType = ReturnType<typeof addPostActionCreator>
-
-export type ChangeNewTextPostActionType = ReturnType<typeof changeNewTextActionCreator>
-
-export type UpdateNewMessageAT = ReturnType<typeof updateNewMessageTextAC>
-
-export type AddNewTextMessageAT = ReturnType<typeof addNewTextMessageAC>
 
 export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
 
@@ -193,44 +181,14 @@ export const store: storeType = {
     subscribe(observer) {
         this._rerenderEntireTree = observer
     },
-
     dispatch(action) {
-        switch (action.type) {
-            case 'ADD-POST':
-                let today = new Date();
-                let newPost: PostType = {
-                    id: v1(),
-                    text: action.postMessage,
-                    date: today.toISOString().substring(0, 10),
-                    time: today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
-                }
-                this._state.profilePage.posts.push(newPost)
-                this._rerenderEntireTree(this._state)
-                break;
-            case 'CHANGE-NEW-TEXT' :
-                this._state.profilePage.newPostText = action.newText
-                this._rerenderEntireTree(this._state)
-                break;
-            case 'UPDATE-NEW-MESSAGE-TEXT' :
-                this._state.dialogsPage.newMessageText = action.text
-                this._rerenderEntireTree(this._state)
-                break;
-            case "ADD-NEW-MESSAGE-TEXT":
-                let newMessage: MessageType = {
-                    id: v1(),
-                    name: "Я",
-                    message: action.newMessage,
-                }
-                this._state.dialogsPage.messages.push(newMessage)
-                this._rerenderEntireTree(this._state)
-                break
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.friendsPage = friendsReducer(this._state.friendsPage, action)
+
+        this._rerenderEntireTree(this._state)
     }
 }
 
 
-export const addPostActionCreator = (text: string) => ({type: "ADD-POST", postMessage: text} as const)
-export const changeNewTextActionCreator = (text: string) => ({type: "CHANGE-NEW-TEXT", newText: text} as const)
-export const updateNewMessageTextAC = (text: string) => ({type: 'UPDATE-NEW-MESSAGE-TEXT', text: text} as const)
-export const addNewTextMessageAC = (text: string) => ({type: 'ADD-NEW-MESSAGE-TEXT', newMessage: text} as const)
 
