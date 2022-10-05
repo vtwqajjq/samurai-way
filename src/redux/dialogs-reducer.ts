@@ -1,10 +1,26 @@
 import {v1} from "uuid";
-import {ActionTypes, DialogsPageType, MessageType} from "./state";
+import {ActionTypes, DialogsPageType, MessageType} from "./store";
 
 export type UpdateNewMessageAT = ReturnType<typeof updateNewMessageTextAC>
 export type AddNewTextMessageAT = ReturnType<typeof addNewTextMessageAC>
 
-export const dialogsReducer = (state: DialogsPageType, action: ActionTypes) => {
+let initialState = {
+    dialogs: [
+        {id: v1(), name: 'Сергей Чирик'},
+        {id: v1(), name: 'Юра Максимов'},
+        {id: v1(), name: 'Виктор Стороженко'},
+        {id: v1(), name: 'Артем Богданов'},
+    ],
+    messages: [
+        {id: v1(), name: 'Я', message: 'hi'},
+        {id: v1(), name: 'Артем Богданов', message: 'how are u?'},
+        {id: v1(), name: 'Я', message: 'not bad,and u?'},
+        {id: v1(), name: 'Артем Богданов', message: 'tnx, im fine'},
+    ],
+    newMessageText: ''
+}
+
+export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionTypes) => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-TEXT' :
             state.newMessageText = action.text

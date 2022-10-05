@@ -3,14 +3,15 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
-import {ActionTypes, RootStateType} from "./redux/state";
+import {ActionTypes} from "./redux/store";
 
 type AppPropsType = {
-    state: RootStateType
+    state: any
     dispatch: (action: ActionTypes) => void
 }
 
 function App(props: AppPropsType) {
+    console.log(props)
     return (
         <Router>
             <div className="App">
@@ -21,8 +22,8 @@ function App(props: AppPropsType) {
                 </div>
                 <div className="main">
                     <div className="container">
-                        <Main profilePage={props.state.profilePage} friendsPage={props.state.friendsPage}
-                              dialogsPage={props.state.dialogsPage} dispatch = {props.dispatch}
+                        <Main profilePage={props.state.profileReducer} friendsPage={props.state.friendsReducer}
+                              dialogsPage={props.state.dialogsReducer} dispatch = {props.dispatch}
                         />
                     </div>
                 </div>

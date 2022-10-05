@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Friends.module.css'
 import {NavLink, Route} from "react-router-dom";
 import {OnlineFriends} from "./Friend/OnlineFriends";
-import {FriendsPageType, FriendType} from "../../../redux/state";
+import {FriendsPageType, FriendType} from "../../../redux/store";
 import {AllFriends} from "./Friend/AllFriends";
 
 type FriendsPropsType = {

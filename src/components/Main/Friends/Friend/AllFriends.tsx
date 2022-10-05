@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './Friend.module.css'
-import {FriendsPageType, FriendType} from "../../../../redux/state";
+import {FriendType} from "../../../../redux/store";
 import {v1} from "uuid";
 
 

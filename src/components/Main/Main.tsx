@@ -9,7 +9,7 @@ import {Photos} from "./Photos/Photos";
 import {Friends} from "./Friends/Friends";
 import {Groups} from "./Groups/Groups";
 import {Music} from "./Music/Music";
-import {ActionTypes, DialogsPageType, FriendsPageType, ProfilePageType,} from "../../redux/state";
+import {ActionTypes, DialogsPageType, FriendsPageType, ProfilePageType,} from "../../redux/store";
 
 type MainPropsType = {
     profilePage: ProfilePageType
