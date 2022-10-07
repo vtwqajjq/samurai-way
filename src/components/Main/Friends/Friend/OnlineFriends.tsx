@@ -1,7 +1,7 @@
 import React from 'react';
 import style from "./Friend.module.css";
-import {FriendType} from "../../../../redux/store";
 import {v1} from "uuid";
+import {FriendType} from "../../Main";
 
 type OnlineFriendsPropsType = {
     friendsOnline: FriendType[]

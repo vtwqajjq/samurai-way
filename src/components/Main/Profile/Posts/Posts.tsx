@@ -1,27 +1,25 @@
 import React, {ChangeEvent} from 'react';
 import style from './Posts.module.css'
 import Post from "./Post/Post";
-import {
-    ActionTypes,
-    PostType
-} from "../../../../redux/store";
-import {addPostActionCreator, changeNewTextActionCreator} from "../../../../redux/profile-reducer";
+import {PostType} from "../../Main";
 
 type PostsPropsType = {
     postsData: PostType[]
-    dispatch: (action: ActionTypes) => void
+    addPost: (element: string) => void
+    changeNewText: (text: string) => void
 }
 
-const Posts = (props: PostsPropsType) => {
+export const Posts = (props: PostsPropsType) => {
     let onClickButtonHandler = () => {
         if (newPostElement.current) {
-            props.dispatch(addPostActionCreator(newPostElement.current?.value.trim()))
+            let element = newPostElement.current?.value.trim()
+            props.addPost(element)
             newPostElement.current.value = ''
         }
     }
     let newPostElement = React.createRef<HTMLTextAreaElement>()
     const onChangeAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(changeNewTextActionCreator(e.currentTarget.value))
+        props.changeNewText(e.currentTarget.value)
     }
 
     return (
@@ -35,4 +33,3 @@ const Posts = (props: PostsPropsType) => {
     );
 };
 
-export default Posts;

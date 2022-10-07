@@ -1,7 +1,8 @@
 import React from 'react';
 import style from './DialogWith.module.css'
 import {NavLink} from "react-router-dom";
-import {DialogType} from "../../../../redux/store";
+import {DialogType} from "../../Main";
+
 
 
 export const DialogWith = (props: DialogType) => {

@@ -9,14 +9,14 @@ let state = store.getState()
 
 let rerenderEntireTree = () => {
     ReactDOM.render(
-        <App state={state} dispatch = {store.dispatch.bind(store)}/>,
+        <App state={state} dispatch={store.dispatch.bind(store)}/>,
         document.getElementById('root')
     );
 }
 
 
 rerenderEntireTree()
-store.subscribe(()=>{
+store.subscribe(() => {
     let state = store.getState();
     rerenderEntireTree()
 })

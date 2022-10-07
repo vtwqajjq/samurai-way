@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './DialogMessage.module.css'
-import {MessageType} from "../../../../redux/store";
-
+import {MessageType} from "../../Main";
 
 
 export const DialogMessage = (props: MessageType) => {

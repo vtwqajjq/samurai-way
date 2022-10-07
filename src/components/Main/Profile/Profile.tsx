@@ -1,8 +1,9 @@
 import React from 'react';
 import style from "./Profile.module.css"
 import {CountModule} from "./CountModule/CountModule";
-import {ActionTypes, ProfilePageType} from "../../../redux/store";
-import Posts from "./Posts/Posts";
+import {ProfilePageType} from "../Main";
+import {ActionTypes} from "../../../App";
+import PostsContainer from "./Posts/PostsContainer";
 
 type ProfilePropsType = {
     profileData: ProfilePageType
@@ -23,7 +24,7 @@ export const Profile = (props: ProfilePropsType) => {
                     <p>Город:<span>{props.profileData.profile.city}</span></p>
                 </div>
                 <CountModule followers={props.profileData.profile.followers} name={'подписчик(-а)'}/>
-                <Posts postsData={props.profileData.posts} dispatch = {props.dispatch}
+                <PostsContainer postsData={props.profileData.posts} dispatch = {props.dispatch}
                 />
                 {/*<CountModule photos={props.photos} name={'фотографии'}/>*/}
             </div>

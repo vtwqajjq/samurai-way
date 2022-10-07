@@ -3,15 +3,18 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
-import {ActionTypes} from "./redux/store";
+import {AddPostActionType, ChangeNewTextPostActionType} from "./redux/profile-reducer";
+import {AddNewTextMessageAT, UpdateNewMessageAT} from "./redux/dialogs-reducer";
+import {RootState} from "./redux/redux-store";
+
+export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
 
 type AppPropsType = {
-    state: any
+    state: RootState
     dispatch: (action: ActionTypes) => void
 }
 
 function App(props: AppPropsType) {
-    console.log(props)
     return (
         <Router>
             <div className="App">
@@ -22,8 +25,7 @@ function App(props: AppPropsType) {
                 </div>
                 <div className="main">
                     <div className="container">
-                        <Main profilePage={props.state.profileReducer} friendsPage={props.state.friendsReducer}
-                              dialogsPage={props.state.dialogsReducer} dispatch = {props.dispatch}
+                        <Main state={props.state} dispatch={props.dispatch}
                         />
                     </div>
                 </div>

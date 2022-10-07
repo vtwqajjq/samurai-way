@@ -1,11 +1,12 @@
 import {v1} from "uuid";
-import {ActionTypes, PostType, ProfilePageType} from "./store";
 import ava from "../assets/img/jpg/Morty.jpg";
+import {PostType, ProfilePageType} from "../components/Main/Main";
+import {ActionTypes} from "../App";
 
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type ChangeNewTextPostActionType = ReturnType<typeof changeNewTextActionCreator>
 
-let initialState = {
+let initialState: ProfilePageType = {
     profile: {
         img: ava,
         name: 'Морцыпанчик Василец',
@@ -43,7 +44,7 @@ let initialState = {
     newPostText: ''
 }
 
-export const profileReducer = (state: ProfilePageType = initialState, action: ActionTypes) => {
+export const profileReducer = (state = initialState, action: ActionTypes) => {
     switch (action.type) {
         case 'ADD-POST':
             let today = new Date();

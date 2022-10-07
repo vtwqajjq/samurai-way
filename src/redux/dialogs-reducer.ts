@@ -1,5 +1,6 @@
-import {v1} from "uuid";
-import {ActionTypes, DialogsPageType, MessageType} from "./store";
+import {v1} from "uuid"
+import {DialogsPageType, MessageType} from "../components/Main/Main";
+import {ActionTypes} from "../App";
 
 export type UpdateNewMessageAT = ReturnType<typeof updateNewMessageTextAC>
 export type AddNewTextMessageAT = ReturnType<typeof addNewTextMessageAC>

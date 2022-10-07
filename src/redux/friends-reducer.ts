@@ -1,6 +1,7 @@
-import {ActionTypes, FriendsPageType} from "./store";
 import {v1} from "uuid";
 import vika from "../assets/img/jpg/Vika.jpg";
+import {FriendsPageType} from "../components/Main/Main";
+import {ActionTypes} from "../App";
 
 let initialState = {
     friends: [

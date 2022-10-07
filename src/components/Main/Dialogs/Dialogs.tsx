@@ -2,13 +2,14 @@ import React, {ChangeEvent} from 'react';
 import style from './Dialogs.module.css'
 import {DialogWith} from "./DialogWith/DialogWith";
 import {DialogMessage} from "./DialogMessages/DialogMessages";
-import {ActionTypes, DialogsPageType,} from "../../../redux/store";
 import {v1} from "uuid";
-import {addNewTextMessageAC, updateNewMessageTextAC} from "../../../redux/dialogs-reducer";
+import {DialogsPageType} from "../Main";
 
 type DialogsPropsType = {
+    updateNewMessageText: (body: string)=> void
+    addNewTextMessage: ()=> void
     dialogsData: DialogsPageType
-    dispatch: (action: ActionTypes) => void
+    newText: string
 }
 
 export const Dialogs = (props: DialogsPropsType) => {
@@ -19,17 +20,16 @@ export const Dialogs = (props: DialogsPropsType) => {
         return <DialogMessage key={v1()} id={m.id} name={m.name} message={m.message}/>
     })
 
-    let newText = props.dialogsData.newMessageText
-
     const onClickButtonHandler = () => {
-        props.dispatch(addNewTextMessageAC(newText.trim()))
+        props.addNewTextMessage()
         props.dialogsData.newMessageText = ''
     }
 
     const onChangeAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewMessageTextAC(e.currentTarget.value))
-    }
+        let body = e.currentTarget.value
+        props.updateNewMessageText(body)
 
+    }
 
     return (
         <div className={style.dialogs}>
@@ -39,7 +39,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={style.messages}>
                 {dialogMessages}
                 <div>
-                    <textarea value={newText}
+                    <textarea value={props.newText}
                               onChange={onChangeAreaHandler} placeholder={'введите текст сообщения...'}/>
                     <button onClick={onClickButtonHandler}>Отправить</button>
                 </div>

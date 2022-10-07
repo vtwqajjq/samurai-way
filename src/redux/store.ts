@@ -5,55 +5,7 @@ import {AddPostActionType, ChangeNewTextPostActionType, profileReducer} from "./
 import {AddNewTextMessageAT, dialogsReducer, UpdateNewMessageAT} from "./dialogs-reducer";
 import {friendsReducer} from "./friends-reducer";
 
-export type DialogType = {
-    id: string
-    name: string
-}
-export type PostType = {
-    id: string
-    text: string
-    date: string
-    time: string
-}
-export type MessageType = {
-    id: string
-    name: string
-    message: string
-}
-export type FriendType = {
-    id: string
-    name: string
-    avatar: string
-    isOnline: boolean
-}
-export type ProfileType = {
-    img: string
-    name: string
-    birthday: string
-    city: string
-    followers: number
-    photos: number
-}
-
-
-export type DialogsPageType = {
-    dialogs: DialogType[]
-    messages: MessageType[],
-    newMessageText: string
-}
-export type FriendsPageType = {
-    friends: FriendType[]
-}
-export type ProfilePageType = {
-    profile: ProfileType
-    posts: PostType[]
-    newPostText: string
-}
-export type RootStateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    friendsPage: FriendsPageType
-}
+/*
 
 export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
 
@@ -188,7 +140,7 @@ export const store: storeType = {
 
         this._rerenderEntireTree(this._state)
     }
-}
+}*/
 
 
 
