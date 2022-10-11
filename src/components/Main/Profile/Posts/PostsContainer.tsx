@@ -7,7 +7,7 @@ import {Posts} from "./Posts";
 
 type PostsPropsType = {
     postsData: PostType[]
-    dispatch: (action: ActionTypes) => void
+    dispatch: any
 }
 
 const PostsContainer = (props: PostsPropsType) => {

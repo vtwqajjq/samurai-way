@@ -57,23 +57,21 @@ export type ProfilePageType = {
     newPostText: string
 }
 
-type MainPropsType = {
+export type MainPropsType = {
     state: RootState
     dispatch: (action: ActionTypes) => void
 }
 
-export const Main = (props: MainPropsType) => {
+export const Main = () => {
     return (
         <BrowserRouter>
             <div className={style.main}>
                 <NavBar/>
-                <Route path='/profile' render={() => <Profile
-                    profileData={props.state.profileReducer} dispatch={props.dispatch}
-                />}/>
+                <Route path='/profile' render={() => <Profile/>}/>
                 <Route path='/news' render={() => <News/>}/>
-                <Route path='/dialogs'
+                {/*<Route path='/dialogs'
                        render={() => <DialogsContainer store={props.state} dispatch={props.dispatch}/>}/>
-                <Route path='/friends/' render={() => <Friends friendsData={props.state.friendsReducer}/>}/>
+                <Route path='/friends/' render={() => <Friends friendsData={props.state.friendsReducer}/>}/>*/}
                 <Route path='/groups' render={() => <Groups/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/photos' render={() => <Photos/>}/>

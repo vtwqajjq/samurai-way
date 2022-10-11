@@ -9,12 +9,7 @@ import {RootState} from "./redux/redux-store";
 
 export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
 
-type AppPropsType = {
-    state: RootState
-    dispatch: (action: ActionTypes) => void
-}
-
-function App(props: AppPropsType) {
+function App() {
     return (
         <Router>
             <div className="App">
@@ -25,8 +20,7 @@ function App(props: AppPropsType) {
                 </div>
                 <div className="main">
                     <div className="container">
-                        <Main state={props.state} dispatch={props.dispatch}
-                        />
+                        <Main/>
                     </div>
                 </div>
             </div>

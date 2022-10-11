@@ -4,30 +4,43 @@ import {CountModule} from "./CountModule/CountModule";
 import {ProfilePageType} from "../Main";
 import {ActionTypes} from "../../../App";
 import PostsContainer from "./Posts/PostsContainer";
+import {StoreContext} from "../../../StoreContext";
 
-type ProfilePropsType = {
+/*type ProfilePropsType = {
     profileData: ProfilePageType
     dispatch: (action: ActionTypes) => void
-}
+}*/
 
-export const Profile = (props: ProfilePropsType) => {
+export const Profile = () => {
     return (
-        <div className={style.profile}>
-            <div className={style.avatar}>
-                <img src={props.profileData.profile.img} alt="Avatar"/>
-                <button>Добавить в друзья</button>
-            </div>
-            <div className={style.info}>
-                <h1>{props.profileData.profile.name}</h1>
-                <div className={style.personInfo}>
-                    <p>День рождения:<span>{props.profileData.profile.birthday}</span></p>
-                    <p>Город:<span>{props.profileData.profile.city}</span></p>
-                </div>
-                <CountModule followers={props.profileData.profile.followers} name={'подписчик(-а)'}/>
-                <PostsContainer postsData={props.profileData.posts} dispatch = {props.dispatch}
-                />
-                {/*<CountModule photos={props.photos} name={'фотографии'}/>*/}
-            </div>
-        </div>
+        <StoreContext.Consumer>
+            {store => {
+                let state = store.getState()
+                return (
+                    <div className={style.profile}>
+                        <div className={style.avatar}>
+                            <img src={state.profilePageData.profile.img} alt="Avatar"/>
+                            <button>Добавить в друзья</button>
+                        </div>
+                        <div className={style.info}>
+                            <h1>{state.profilePageData.profile.name}</h1>
+                            <div className={style.personInfo}>
+                                <p>День рождения:<span>{state.profilePageData.profile.birthday}</span></p>
+                                <p>Город:<span>{state.profilePageData.profile.city}</span></p>
+                            </div>
+                            <CountModule followers={state.profilePageData.profile.followers}
+                                         name={'подписчик(-а)'}/>
+                            <PostsContainer postsData={state.profilePageData.posts} dispatch={store.dispatch}
+                            />
+                            {/*<CountModule photos={props.photos} name={'фотографии'}/>*/}
+                        </div>
+                    </div>
+                )
+            }
+
+
+            }
+        </StoreContext.Consumer>
+
     );
 };

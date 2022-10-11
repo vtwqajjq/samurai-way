@@ -9,13 +9,7 @@ import {friendsReducer} from "./friends-reducer";
 
 export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
 
-export type storeType = {
-    _state: RootStateType
-    getState: () => RootStateType
-    _rerenderEntireTree: (_state: RootStateType) => void
-    subscribe: (observer: () => void) => void
-    dispatch: (action: ActionTypes) => void
-}
+
 
 export const store: storeType = {
     _state: {
