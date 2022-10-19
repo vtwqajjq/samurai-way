@@ -1,15 +1,10 @@
 import React, {ChangeEvent} from 'react';
 import style from './Posts.module.css'
 import Post from "./Post/Post";
-import {PostType} from "../../Main";
+import {ProfilePagePropsType} from "./PostsContainer";
 
-type PostsPropsType = {
-    postsData: PostType[]
-    addPost: (element: string) => void
-    changeNewText: (text: string) => void
-}
 
-export const Posts = (props: PostsPropsType) => {
+export const Posts = (props: ProfilePagePropsType) => {
     let onClickButtonHandler = () => {
         if (newPostElement.current) {
             let element = newPostElement.current?.value.trim()
@@ -28,7 +23,7 @@ export const Posts = (props: PostsPropsType) => {
                 <textarea onChange={onChangeAreaHandler} ref={newPostElement}></textarea>
                 <button onClick={onClickButtonHandler}>Добавить пост</button>
             </div>
-            <Post posts={props.postsData}/>
+            <Post posts={props.profilePage.posts}/>
         </div>
     );
 };

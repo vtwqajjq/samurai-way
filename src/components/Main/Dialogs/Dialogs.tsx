@@ -3,26 +3,20 @@ import style from './Dialogs.module.css'
 import {DialogWith} from "./DialogWith/DialogWith";
 import {DialogMessage} from "./DialogMessages/DialogMessages";
 import {v1} from "uuid";
-import {DialogsPageType} from "../Main";
+import {DialogsPropsType} from "./DialogsContainer";
 
-type DialogsPropsType = {
-    updateNewMessageText: (body: string)=> void
-    addNewTextMessage: ()=> void
-    dialogsData: DialogsPageType
-    newText: string
-}
 
 export const Dialogs = (props: DialogsPropsType) => {
-    let dialogs = props.dialogsData.dialogs.map((d) => {
+    let dialogs = props.dialogsPage.dialogs.map((d) => {
         return <DialogWith key={v1()} id={d.id} name={d.name}/>
     })
-    let dialogMessages = props.dialogsData.messages.map((m) => {
+    let dialogMessages = props.dialogsPage.messages.map((m) => {
         return <DialogMessage key={v1()} id={m.id} name={m.name} message={m.message}/>
     })
 
     const onClickButtonHandler = () => {
         props.addNewTextMessage()
-        props.dialogsData.newMessageText = ''
+        props.dialogsPage.newMessageText = ''
     }
 
     const onChangeAreaHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -39,7 +33,7 @@ export const Dialogs = (props: DialogsPropsType) => {
             <div className={style.messages}>
                 {dialogMessages}
                 <div>
-                    <textarea value={props.newText}
+                    <textarea value={props.dialogsPage.newMessageText}
                               onChange={onChangeAreaHandler} placeholder={'введите текст сообщения...'}/>
                     <button onClick={onClickButtonHandler}>Отправить</button>
                 </div>

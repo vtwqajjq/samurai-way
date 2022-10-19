@@ -1,32 +1,37 @@
-import React, {ChangeEvent} from 'react';
-import style from './Dialogs.module.css'
-import {DialogWith} from "./DialogWith/DialogWith";
-import {DialogMessage} from "./DialogMessages/DialogMessages";
-import {v1} from "uuid";
+import React, {Dispatch} from 'react';
 import {addNewTextMessageAC, updateNewMessageTextAC} from "../../../redux/dialogs-reducer";
-import {DialogsPageType} from "../Main";
-import {ActionTypes} from "../../../App";
 import {Dialogs} from "./Dialogs";
-import {RootState} from "../../../redux/redux-store";
+import {connect} from "react-redux";
+import {RootStateType} from "../../../redux/redux-store";
+import {DialogsPageType} from "../Main";
 
-type DialogsPropsType = {
-    store: RootState
-    dispatch: (action: ActionTypes) => void
+type MapStateToPropsType = {
+    dialogsPage: DialogsPageType
 }
 
-export const DialogsContainer = (props: DialogsPropsType) => {
-    let dialogsData = props.store.dialogsReducer
-    let newText = props.store.dialogsReducer.newMessageText
+type MapDispatchToPropsType = {
+    updateNewMessageText: (body: string) => void
+    addNewTextMessage: () => void
+}
 
-    const onClickButtonHandler = () => {
-        props.dispatch(addNewTextMessageAC(newText.trim()))
-        props.store.dialogsReducer.newMessageText = ''
+export type DialogsPropsType = MapStateToPropsType & MapDispatchToPropsType
+
+let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
+    return {
+        dialogsPage: state.dialogsReducer
     }
+}
 
-    const onChangeAreaHandler = (body: string) => {
-        props.dispatch(updateNewMessageTextAC(body))
+let mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchToPropsType => {
+    return {
+        updateNewMessageText: (body: string) => {
+            dispatch(updateNewMessageTextAC(body))
+        },
+        addNewTextMessage: () => {
+            dispatch(addNewTextMessageAC())
+        }
+
     }
+}
 
-
-    return <Dialogs updateNewMessageText={onChangeAreaHandler} addNewTextMessage={onClickButtonHandler} dialogsData={dialogsData} newText={newText}/>
-};
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
