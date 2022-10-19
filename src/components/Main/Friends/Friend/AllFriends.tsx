@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Friend.module.css'
 import {v1} from "uuid";
-import {FriendType} from "../../Main";
+import {FriendType} from "../../../../redux/friends-reducer";
 
 
 type AllFriendsProps = {

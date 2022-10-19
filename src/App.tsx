@@ -6,8 +6,9 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {AddPostActionType, ChangeNewTextPostActionType} from "./redux/profile-reducer";
 import {AddNewTextMessageAT, UpdateNewMessageAT} from "./redux/dialogs-reducer";
 import {RootStateType} from "./redux/redux-store";
+import {FollowAT, SetUsersAT, UnfollowAT} from "./redux/friends-reducer";
 
-export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT
+export type ActionTypes = AddPostActionType | ChangeNewTextPostActionType | UpdateNewMessageAT | AddNewTextMessageAT | FollowAT | UnfollowAT | SetUsersAT
 
 type AppPropsType = {
     state: RootStateType
