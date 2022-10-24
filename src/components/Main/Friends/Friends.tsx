@@ -19,7 +19,7 @@ export const Friends = (props: FriendsPropsType) => {
             </div>
             <div className={style.friends}>
                 <Route path='/friends/all' render={() => <AllFriends friendsAll = {props.friendsPage.friends} />}/>
-                <Route path='/friends/online' render={() => <OnlineFriends friendsOnline = {filteredFriendByOnline}/>}/><Route path='/friends/find' render={() => <FindFriends users={props.friendsPage.users} follow={props.follow} unfollow={props.unfollow}/>}/>
+                <Route path='/friends/online' render={() => <OnlineFriends friendsOnline = {filteredFriendByOnline}/>}/><Route path='/friends/find' render={() => <FindFriends users={props.friendsPage.users} follow={props.follow} unfollow={props.unfollow} setUsers={props.setUsers}/>}/>
             </div>
         </div>
     );

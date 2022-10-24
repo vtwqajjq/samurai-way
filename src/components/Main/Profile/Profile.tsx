@@ -2,12 +2,10 @@ import React from 'react';
 import style from "./Profile.module.css"
 import {CountModule} from "./CountModule/CountModule";
 import {ProfilePageType} from "../Main";
-import {ActionTypes} from "../../../App";
 import PostsContainer from "./Posts/PostsContainer";
 
 type ProfilePropsType = {
     profileData: ProfilePageType
-    dispatch: (action: ActionTypes) => void
 }
 
 export const Profile = (props: ProfilePropsType) => {

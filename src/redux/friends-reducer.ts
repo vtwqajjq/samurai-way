@@ -3,16 +3,15 @@ import vika from "../assets/img/jpg/Vika.jpg";
 import {ActionTypes} from "../App";
 
 export type UserType = {
-    id: string
     name: string
-    avatar: string
-    profileStatus: string
-    isOnline: boolean
-    isFriend: boolean
-    location: {
-        city: string
-        country: string
+    id: any //need to fix later
+    uniqueUrlName: string | null
+    photos: {
+        small: any //need to fix later
+        large: any
     }
+    status: string
+    followed: boolean
 }
 export type FriendType = {
     id: string
@@ -32,56 +31,7 @@ export type UnfollowAT = ReturnType<typeof unfollowAC>
 export type SetUsersAT = ReturnType<typeof setUsersAC>
 
 let initialState = {
-    users: [
-        {
-            id: v1(),
-            name: 'Юрий Максимов',
-            avatar: 'https://sun9-58.userapi.com/c5780/u139529585/a_87394db2.jpg',
-            profileStatus: 'Люблю пить пиво, делать всякую дичь и вообще я лютый фрик',
-            isOnline: true,
-            isFriend: false,
-            location: {
-                city: 'Речица',
-                country: 'Беларусь'
-            }
-        },
-        {
-            id: v1(),
-            name: 'Юрий Максимов',
-            avatar: 'https://sun9-58.userapi.com/c5780/u139529585/a_87394db2.jpg',
-            profileStatus: 'Люблю пить пиво, делать всякую дичь и вообще я лютый фрик',
-            isOnline: true,
-            isFriend: false,
-            location: {
-                city: 'Речица',
-                country: 'Беларусь'
-            }
-        },
-        {
-            id: v1(),
-            name: 'Юрий Максимов',
-            avatar: 'https://sun9-58.userapi.com/c5780/u139529585/a_87394db2.jpg',
-            profileStatus: 'Люблю пить пиво, делать всякую дичь и вообще я лютый фрик',
-            isOnline: true,
-            isFriend: false,
-            location: {
-                city: 'Речица',
-                country: 'Беларусь'
-            }
-        },
-        {
-            id: v1(),
-            name: 'Юрий Максимов',
-            avatar: 'https://sun9-58.userapi.com/c5780/u139529585/a_87394db2.jpg',
-            profileStatus: 'Люблю пить пиво, делать всякую дичь и вообще я лютый фрик',
-            isOnline: true,
-            isFriend: true,
-            location: {
-                city: 'Речица',
-                country: 'Беларусь'
-            }
-        }
-    ],
+    users: [],
     friends: [
         {
             id: v1(),
