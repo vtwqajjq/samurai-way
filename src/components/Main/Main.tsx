@@ -55,19 +55,19 @@ type MainPropsType = {
 
 export const Main = (props: MainPropsType) => {
     return (
-            <div className={style.main}>
-                <NavBar/>
-                <Route path='/profile' render={() => <Profile
-                    profileData={props.state.profileReducer}
-                />}/>
-                <Route path='/news' render={() => <News/>}/>
-                <Route path='/dialogs'
-                       render={() => <DialogsContainer/>}/>
-                <Route path='/friends/' render={() => <FriendsContainer/>}/>
-                <Route path='/groups' render={() => <Groups/>}/>
-                <Route path='/music' render={() => <Music/>}/>
-                <Route path='/photos' render={() => <Photos/>}/>
-            </div>
+        <div className={style.main}>
+            <NavBar/>
+            <Route path='/profile' render={() => <Profile
+                profileData={props.state.profileReducer}
+            />}/>
+            <Route path='/news' render={() => <News/>}/>
+            <Route path='/dialogs'
+                   render={() => <DialogsContainer/>}/>
+            <Route path='/friends/' render={() => <FriendsContainer/>}/>
+            <Route path='/groups' render={() => <Groups/>}/>
+            <Route path='/music' render={() => <Music/>}/>
+            <Route path='/photos' render={() => <Photos/>}/>
+        </div>
     );
 };
 

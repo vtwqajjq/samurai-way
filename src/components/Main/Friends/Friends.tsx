@@ -13,13 +13,25 @@ export const Friends = (props: FriendsPropsType) => {
     return (
         <div className={style.wrapper}>
             <div className={style.header}>
-                <NavLink className={(isActive) => isActive ? style.active : ""} to='/friends/all'>Все друзья</NavLink><span>{props.friendsPage.friends.length}</span>
-                <NavLink className={(isActive) => isActive ? style.active : ""} to='/friends/online'>Друзья онлайн</NavLink><span>{filteredFriendByOnline.length}</span>
-                <NavLink className={(isActive) => isActive ? style.active : ""} to='/friends/find'>Поиск друзей</NavLink>
+                <NavLink className={(isActive) => isActive ? style.active : ""} to='/friends/all'>Все
+                    друзья</NavLink><span>{props.friendsPage.friends.length}</span>
+                <NavLink className={(isActive) => isActive ? style.active : ""} to='/friends/online'>Друзья
+                    онлайн</NavLink><span>{filteredFriendByOnline.length}</span>
+                <NavLink className={(isActive) => isActive ? style.active : ""} to='/friends/find'>Поиск
+                    друзей</NavLink>
             </div>
             <div className={style.friends}>
-                <Route path='/friends/all' render={() => <AllFriends friendsAll = {props.friendsPage.friends} />}/>
-                <Route path='/friends/online' render={() => <OnlineFriends friendsOnline = {filteredFriendByOnline}/>}/><Route path='/friends/find' render={() => <FindFriends users={props.friendsPage.users} follow={props.follow} unfollow={props.unfollow} setUsers={props.setUsers}/>}/>
+                <Route path='/friends/all' render={() => <AllFriends friendsAll={props.friendsPage.friends}/>}/>
+                <Route path='/friends/online'
+                       render={() => <OnlineFriends friendsOnline={filteredFriendByOnline}/>}/><Route
+                path='/friends/find' render={() => <FindFriends users={props.friendsPage.users} follow={props.follow}
+                                                                unfollow={props.unfollow} setUsers={props.setUsers}
+                                                                pageSize={props.friendsPage.pageSize}
+                                                                totalUsersCount={props.friendsPage.totalUsersCount}
+                                                                currentPage={props.friendsPage.currentPage}
+                                                                changeCurrentPage={props.changeCurrentPage}
+                                                                setUsersCount={props.setUsersCount}
+                                                                changePageSize={props.changePageSize}/>}/>
             </div>
         </div>
     );

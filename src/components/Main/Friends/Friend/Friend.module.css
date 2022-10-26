@@ -49,3 +49,57 @@
     cursor: pointer;
     color: #FFFFFF;
 }
+
+.pages {
+    display: flex;
+    justify-content: space-around;
+    padding: 3px;
+}
+
+.pages span {
+    cursor: pointer;
+}
+
+.pages span.active {
+    font-weight: bold;
+}
+
+.search {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search input {
+    width: 40%;
+    height: 40px;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 12px;
+    border: 1px solid #416A9A ;
+}
+
+.displayUsersAmount {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.block {
+    width: 40px;
+    font-size: 12px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.block:not(:last-child) {
+    border-right: 2px solid #aaaaaa;
+}
+
+.block.active {
+    font-size: 16px;
+}

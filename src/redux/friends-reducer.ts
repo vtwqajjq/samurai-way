@@ -23,15 +23,24 @@ export type FriendType = {
 
 export type FriendsPageType = {
     users: UserType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
     friends: FriendType[]
 }
 
 export type FollowAT = ReturnType<typeof followAC>
 export type UnfollowAT = ReturnType<typeof unfollowAC>
 export type SetUsersAT = ReturnType<typeof setUsersAC>
+export type ChangeCurrentPageAT = ReturnType<typeof changeCurrentPageAC>
+export type SetUsersCountAT = ReturnType<typeof setUsersCountAC>
+export type ChangePageSizeAT = ReturnType<typeof changePageSizeAC>
 
 let initialState = {
     users: [],
+    pageSize: 5,
+    totalUsersCount: 0,
+    currentPage: 1,
     friends: [
         {
             id: v1(),
@@ -116,7 +125,19 @@ export const friendsReducer = (state: FriendsPageType = initialState, action: Ac
             };
         case "SET-USERS" :
             return {
-                ...state, users: [...state.users, ...action.users]
+                ...state, users: [...action.users]
+            }
+        case "CHANGE-PAGE-NUMBER":
+            return {
+                ...state, currentPage: action.pageNumber
+            }
+        case "SET_USERS_COUNT":
+            return {
+                ...state, totalUsersCount: action.usersCount
+            }
+        case "CHANGE_PAGE_SIZE":
+            return {
+                ...state, pageSize: action.pageSize
             }
         default:
             return state
@@ -126,3 +147,6 @@ export const friendsReducer = (state: FriendsPageType = initialState, action: Ac
 export const followAC = (id: string) => ({type: 'FOLLOW', userId: id} as const)
 export const unfollowAC = (id: string) => ({type: 'UNFOLLOW', userId: id} as const)
 export const setUsersAC = (users: UserType[]) => ({type: "SET-USERS", users: users} as const)
+export const changeCurrentPageAC = (pageNumber: number) => ({type: 'CHANGE-PAGE-NUMBER', pageNumber} as const)
+export const setUsersCountAC = (usersCount: number) => ({type: 'SET_USERS_COUNT', usersCount} as const)
+export const changePageSizeAC = (pageSize: number) => ({type: 'CHANGE_PAGE_SIZE', pageSize} as const)
