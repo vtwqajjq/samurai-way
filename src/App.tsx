@@ -11,7 +11,7 @@ import {
     ChangePageSizeAT,
     FollowAT,
     SetUsersAT,
-    SetUsersCountAT,
+    SetUsersCountAT, toggleIsFetchingAT,
     UnfollowAT
 } from "./redux/friends-reducer";
 
@@ -26,6 +26,7 @@ export type ActionTypes =
     | ChangeCurrentPageAT
     | SetUsersCountAT
     | ChangePageSizeAT
+    | toggleIsFetchingAT
 
 type AppPropsType = {
     state: RootStateType

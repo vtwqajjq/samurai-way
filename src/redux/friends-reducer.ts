@@ -26,21 +26,25 @@ export type FriendsPageType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
     friends: FriendType[]
+
 }
 
-export type FollowAT = ReturnType<typeof followAC>
-export type UnfollowAT = ReturnType<typeof unfollowAC>
-export type SetUsersAT = ReturnType<typeof setUsersAC>
-export type ChangeCurrentPageAT = ReturnType<typeof changeCurrentPageAC>
-export type SetUsersCountAT = ReturnType<typeof setUsersCountAC>
-export type ChangePageSizeAT = ReturnType<typeof changePageSizeAC>
+export type FollowAT = ReturnType<typeof follow>
+export type UnfollowAT = ReturnType<typeof unfollow>
+export type SetUsersAT = ReturnType<typeof setUsers>
+export type ChangeCurrentPageAT = ReturnType<typeof changeCurrentPage>
+export type SetUsersCountAT = ReturnType<typeof setUsersCount>
+export type ChangePageSizeAT = ReturnType<typeof changePageSize>
+export type toggleIsFetchingAT = ReturnType<typeof toggleIsFetching>
 
 let initialState = {
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
+    isFetching: true,
     friends: [
         {
             id: v1(),
@@ -101,6 +105,7 @@ let initialState = {
     ],
 }
 
+
 export const friendsReducer = (state: FriendsPageType = initialState, action: ActionTypes): FriendsPageType => {
     switch (action.type) {
         case 'FOLLOW':
@@ -139,14 +144,19 @@ export const friendsReducer = (state: FriendsPageType = initialState, action: Ac
             return {
                 ...state, pageSize: action.pageSize
             }
+        case "TOGGLE_IS_FETCHING":
+            return {
+                ...state, isFetching: action.isFetching
+            }
         default:
             return state
     }
 }
 
-export const followAC = (id: string) => ({type: 'FOLLOW', userId: id} as const)
-export const unfollowAC = (id: string) => ({type: 'UNFOLLOW', userId: id} as const)
-export const setUsersAC = (users: UserType[]) => ({type: "SET-USERS", users: users} as const)
-export const changeCurrentPageAC = (pageNumber: number) => ({type: 'CHANGE-PAGE-NUMBER', pageNumber} as const)
-export const setUsersCountAC = (usersCount: number) => ({type: 'SET_USERS_COUNT', usersCount} as const)
-export const changePageSizeAC = (pageSize: number) => ({type: 'CHANGE_PAGE_SIZE', pageSize} as const)
+export const follow = (id: string) => ({type: 'FOLLOW', userId: id} as const)
+export const unfollow = (id: string) => ({type: 'UNFOLLOW', userId: id} as const)
+export const setUsers = (users: UserType[]) => ({type: "SET-USERS", users: users} as const)
+export const changeCurrentPage = (pageNumber: number) => ({type: 'CHANGE-PAGE-NUMBER', pageNumber} as const)
+export const setUsersCount = (usersCount: number) => ({type: 'SET_USERS_COUNT', usersCount} as const)
+export const changePageSize = (pageSize: number) => ({type: 'CHANGE_PAGE_SIZE', pageSize} as const)
+export const toggleIsFetching = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching} as const)

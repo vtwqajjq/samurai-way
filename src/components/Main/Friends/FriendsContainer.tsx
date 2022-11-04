@@ -1,15 +1,63 @@
 import {connect} from "react-redux";
-import {Friends} from "./Friends";
 import {
-    changeCurrentPageAC, changePageSizeAC,
-    followAC,
+    changeCurrentPage,
+    changePageSize,
+    follow,
     FriendsPageType,
-    setUsersAC, setUsersCountAC,
-    unfollowAC,
+    setUsers,
+    setUsersCount,
+    toggleIsFetching,
+    unfollow,
     UserType
 } from "../../../redux/friends-reducer";
 import {RootStateType} from "../../../redux/redux-store";
-import {Dispatch} from "react";
+import React from "react";
+import axios from "axios";
+import {Friends} from "./Friends";
+
+class FriendsContainerApi extends React.Component<any, FriendsContainerPropsType> {
+
+    componentDidMount() {
+        this.props.toggleIsFetching(true)
+        axios
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.toggleIsFetching(false)
+                this.props.setUsers(response.data.items)
+                this.props.setUsersCount(response.data.totalCount)
+            })
+    }
+
+    changePageNumber = (pageNumber: number) => {
+        this.props.changeCurrentPage(pageNumber)
+        this.props.toggleIsFetching(true)
+        axios
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.toggleIsFetching(false)
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    changePageSize = (pageSize: string | null) => {
+        pageSize && this.props.changePageSize(+pageSize)
+        this.props.toggleIsFetching(true)
+        axios
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=1&count=${pageSize}`)
+            .then(response => {
+                this.props.toggleIsFetching(false)
+                this.props.setUsers(response.data.items)
+            })
+    }
+
+    render() {
+        return <Friends friendsPage={this.props.friendsPage} follow={this.props.follow} unfollow={this.props.unfollow}
+                        setUsers={this.props.setUsers} changeCurrentPage={this.props.changeCurrentPage}
+                        setUsersCount={this.props.setUsersCount} changePageSize={this.changePageSize}
+                        changePageNumber={this.changePageNumber}
+        />
+    }
+}
 
 type MapStateToPropsType = {
     friendsPage: FriendsPageType
@@ -22,9 +70,10 @@ type MapDispatchToPropsType = {
     changeCurrentPage: (pageNumber: number) => void
     setUsersCount: (userCount: number) => void
     changePageSize: (pageSize: number) => void
+    toggleIsFetching: (isFetching: boolean) => void
 }
 
-export type FriendsPropsType = MapStateToPropsType & MapDispatchToPropsType
+export type FriendsContainerPropsType = MapStateToPropsType & MapDispatchToPropsType
 
 
 let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
@@ -32,28 +81,17 @@ let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
         friendsPage: state.friendsReducer
     }
 }
-
+/*
 let mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchToPropsType => {
-    return {
-        follow: (userId: string) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId: string) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users: UserType[]) => {
-            dispatch(setUsersAC(users))
-        },
-        changeCurrentPage: (pageNumber) => {
-            dispatch(changeCurrentPageAC(pageNumber))
-        },
-        setUsersCount: (usersCount: number) => {
-            dispatch(setUsersCountAC(usersCount))
-        },
-        changePageSize: (pageSize: number) => {
-            dispatch(changePageSizeAC(pageSize))
-        }
-    }
-}
+    return
+}*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(Friends)
+export default connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    changeCurrentPage,
+    setUsersCount,
+    changePageSize,
+    toggleIsFetching
+})(FriendsContainerApi)
