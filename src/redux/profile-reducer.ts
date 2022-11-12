@@ -1,20 +1,13 @@
 import {v1} from "uuid";
-import ava from "../assets/img/jpg/Morty.jpg";
-import {PostType, ProfilePageType} from "../components/Main/Main";
+import {PostType, ProfilePageType, ProfileType} from "../components/Main/Main";
 import {ActionTypes} from "../App";
 
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type ChangeNewTextPostActionType = ReturnType<typeof changeNewTextActionCreator>
+export type SetUserProfileAT = ReturnType<typeof setUserProfile>
 
 let initialState: ProfilePageType = {
-    profile: {
-        img: ava,
-        name: 'Морцыпанчик Василец',
-        birthday: '9 февраля',
-        city: 'Минск',
-        followers: 1,
-        photos: 22
-    },
+    profile: null,
     posts: [],
     newPostText: ''
 }
@@ -40,6 +33,11 @@ export const profileReducer = (state = initialState, action: ActionTypes) => {
                 ...state,
                 newPostText: action.newText
             };
+        case "SET-USER-PROFILE":
+            return {
+                ...state,
+                profile: action.profile
+            }
         default:
             return state
     }
@@ -47,3 +45,4 @@ export const profileReducer = (state = initialState, action: ActionTypes) => {
 
 export const addPostActionCreator = (text: string) => ({type: "ADD-POST", postMessage: text} as const)
 export const changeNewTextActionCreator = (text: string) => ({type: "CHANGE-NEW-TEXT", newText: text} as const)
+export const setUserProfile = (profile: ProfileType) => ({type: "SET-USER-PROFILE", profile} as const)

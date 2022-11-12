@@ -11,6 +11,7 @@ import {ActionTypes} from "../../App";
 import {DialogsContainer} from "./Dialogs/DialogsContainer";
 import {RootStateType} from "../../redux/redux-store";
 import FriendsContainer from "./Friends/FriendsContainer";
+import ProfileContainer from "./Profile/ProfileContainer";
 
 export type DialogType = {
     id: string
@@ -28,13 +29,26 @@ export type MessageType = {
     message: string
 }
 export type ProfileType = {
-    img: string
-    name: string
-    birthday: string
-    city: string
-    followers: number
-    photos: number
-}
+    aboutMe: string
+    contacts: {
+        facebook: string | null
+        website: string | null
+        vk: string | null
+        twitter: string | null
+        instagram: string | null
+        youtube: string | null
+        github: string | null
+        mainLink: string | null
+    }
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: {
+        small: string | null
+        large: string
+    }
+} | null
 
 
 export type DialogsPageType = {
@@ -57,8 +71,7 @@ export const Main = (props: MainPropsType) => {
     return (
         <div className={style.main}>
             <NavBar/>
-            <Route path='/profile' render={() => <Profile
-                profileData={props.state.profileReducer}
+            <Route path='/profile' render={() => <ProfileContainer
             />}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/dialogs'

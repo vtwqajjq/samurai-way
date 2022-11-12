@@ -3,6 +3,7 @@ import style from "./Friend.module.css";
 import {v1} from "uuid";
 import {UserType} from "../../../../redux/friends-reducer";
 import empty from "../../../../assets/img/jpg/pustaya-ava.jpg";
+import {NavLink} from "react-router-dom";
 
 type FindFriendsPropsType = {
     users: UserType[]
@@ -54,7 +55,9 @@ const FindFriends = (props: FindFriendsPropsType) => {
                 return (
                     <div key={v1()} className={style.friend}>
                         <div className={style.avatar}>
-                            <img src={u.photos.small != null ? u.photos.small : empty} alt="avatar"/>
+                            <NavLink to={'/profile/'+u.id}>
+                                <img src={u.photos.small != null ? u.photos.small : empty} alt="avatar"/>
+                            </NavLink>
                         </div>
                         <div className={style.friendDescription}>
                             <h5>{u.name}</h5>

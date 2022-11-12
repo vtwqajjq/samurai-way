@@ -3,7 +3,7 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
-import {AddPostActionType, ChangeNewTextPostActionType} from "./redux/profile-reducer";
+import {AddPostActionType, ChangeNewTextPostActionType, SetUserProfileAT} from "./redux/profile-reducer";
 import {AddNewTextMessageAT, UpdateNewMessageAT} from "./redux/dialogs-reducer";
 import {RootStateType} from "./redux/redux-store";
 import {
@@ -11,7 +11,8 @@ import {
     ChangePageSizeAT,
     FollowAT,
     SetUsersAT,
-    SetUsersCountAT, toggleIsFetchingAT,
+    SetUsersCountAT,
+    toggleIsFetchingAT,
     UnfollowAT
 } from "./redux/friends-reducer";
 
@@ -27,6 +28,7 @@ export type ActionTypes =
     | SetUsersCountAT
     | ChangePageSizeAT
     | toggleIsFetchingAT
+    | SetUserProfileAT
 
 type AppPropsType = {
     state: RootStateType
