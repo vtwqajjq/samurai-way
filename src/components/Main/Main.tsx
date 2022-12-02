@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavBar} from "./NavBar/NavBar";
-import {Profile} from "./Profile/Profile";
 import style from "./Main.module.css"
 import {Route} from "react-router-dom";
 import {News} from "./News/News";
@@ -71,7 +70,7 @@ export const Main = (props: MainPropsType) => {
     return (
         <div className={style.main}>
             <NavBar/>
-            <Route path='/profile' render={() => <ProfileContainer
+            <Route path='/profile/:userId?' render={() => <ProfileContainer
             />}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/dialogs'

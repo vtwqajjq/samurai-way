@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {BrowserRouter as Router} from "react-router-dom";
 import {AddPostActionType, ChangeNewTextPostActionType, SetUserProfileAT} from "./redux/profile-reducer";
@@ -15,6 +14,8 @@ import {
     toggleIsFetchingAT,
     UnfollowAT
 } from "./redux/friends-reducer";
+import {setAuthDataAT} from "./redux/auth-reducer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 export type ActionTypes =
     AddPostActionType
@@ -29,6 +30,7 @@ export type ActionTypes =
     | ChangePageSizeAT
     | toggleIsFetchingAT
     | SetUserProfileAT
+    | setAuthDataAT
 
 type AppPropsType = {
     state: RootStateType
@@ -41,7 +43,7 @@ function App(props: AppPropsType) {
             <div className="App">
                 <div className='header'>
                     <div className='container'>
-                        <Header/>
+                        <HeaderContainer/>
                     </div>
                 </div>
                 <div className="main">

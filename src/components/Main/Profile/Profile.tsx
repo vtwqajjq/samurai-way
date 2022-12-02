@@ -1,6 +1,5 @@
 import React from 'react';
 import style from "./Profile.module.css"
-import {CountModule} from "./CountModule/CountModule";
 import {ProfilePageType} from "../Main";
 import PostsContainer from "./Posts/PostsContainer";
 import Preloader from "../../common/Preloader/Preloader";
@@ -23,7 +22,12 @@ export const Profile = (props: ProfilePropsType) => {
                 <h1>{props.profileData.profile.fullName}</h1>
                 <p>{props.profileData.profile.aboutMe}</p>
                 <div className={style.personInfo}>
+                    <p>Facebook: <span>{props.profileData.profile.contacts.facebook}</span></p>
+                    <p>Website: <span>{props.profileData.profile.contacts.website}</span></p>
+                    <p>Twitter: <span>{props.profileData.profile.contacts.twitter}</span></p>
                     <p>Instagram: <span>{props.profileData.profile.contacts.instagram}</span></p>
+                    <p>Youtube: <span>{props.profileData.profile.contacts.youtube}</span></p>
+                    <p>Instagram: <span>{props.profileData.profile.contacts.github}</span></p>
                 </div>
                 {/*<CountModule followers={props.profileData.profile.followers} name={'подписчик(-а)'}/>*/}
                 <PostsContainer/>
