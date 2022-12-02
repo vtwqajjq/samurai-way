@@ -81,10 +81,6 @@ let mapStateToProps = (state: RootStateType): MapStateToPropsType => {
         friendsPage: state.friendsReducer
     }
 }
-/*
-let mapDispatchToProps = (dispatch: Dispatch<any>): MapDispatchToPropsType => {
-    return
-}*/
 
 export default connect(mapStateToProps, {
     follow,

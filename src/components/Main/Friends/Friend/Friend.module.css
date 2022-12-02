@@ -52,8 +52,12 @@
 
 .pages {
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
+    gap: 2px;
+    width: 100%;
     padding: 3px;
+    overflow: hidden;
+    background: #EDEEF0;
 }
 
 .pages span {

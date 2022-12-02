@@ -4,6 +4,7 @@ import {v1} from "uuid";
 import {UserType} from "../../../../redux/friends-reducer";
 import empty from "../../../../assets/img/jpg/pustaya-ava.jpg";
 import {NavLink} from "react-router-dom";
+import {Pagination} from "../../../common/Pagination/Pagination";
 
 type FindFriendsPropsType = {
     users: UserType[]
@@ -46,11 +47,12 @@ const FindFriends = (props: FindFriendsPropsType) => {
                 </div>
             </div>
 
-            <div className={style.pages}>
+            {/*<div className={style.pages}>
                 {pages.map(p => <span key={v1()} onClick={() => {
                     props.changePageNumber(p)
                 }} className={props.currentPage === p ? style.active : ''}>{p}</span>)}
-            </div>
+            </div>*/}
+            <Pagination currentPage={props.currentPage} pageSize={props.pageSize} siblingCount={2} totalCount={props.totalUsersCount} onPageChange={props.changePageNumber}/>
             {props.users.map((u: UserType) => {
                 return (
                     <div key={v1()} className={style.friend}>
